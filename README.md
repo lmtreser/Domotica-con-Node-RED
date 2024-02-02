@@ -2,6 +2,40 @@
 
 Demo de implementación de panel domótico con Node-RED para proyectos de dómotica de bajo costo. 
 
+## Implementación con Node-RED
+
+
+
+## Firmware con Arduino API
+
+
+
+## Firmware con MicroPython
+
+Metadata-Version: 1.0
+Name: micropython-umqtt.robust
+Version: 1.0
+Summary: Lightweight MQTT client for MicroPython ("robust" version).
+Home-page: https://github.com/micropython/micropython/issues/405
+Author: MicroPython Developers
+Author-email: micro-python@googlegroups.com
+License: MIT
+Description: umqtt.robust
+        ============
+
+        umqtt is a simple MQTT client for MicroPython. (Note that it uses some
+        MicroPython shortcuts and doesn't work with CPython). It consists of
+        two submodules: umqtt.simple and umqtt.robust. umqtt.robust is built
+        on top of umqtt.simple and adds auto-reconnect facilities for some of
+        networking errors.
+
+umqtt.robust
+umqtt is a simple MQTT client for MicroPython. (Note that it uses some
+MicroPython shortcuts and doesn't work with CPython). It consists of
+two submodules: umqtt.simple and umqtt.robust. umqtt.robust is built
+on top of umqtt.simple and adds auto-reconnect facilities for some of
+networking errors.
+
 ## Licencia
 
 Este trabajo está protegido por la **Licencia MIT**. Puedes acceder a la versión original de la licencia (en inglés) a través del archivo [LICENSE](./LICENSE) o en línea en [The MIT License (MIT)](https://mit-license.org/). También proporcionamos una traducción no oficial desde [Wikipedia](https://es.m.wikipedia.org/wiki/Licencia_MIT#La_licencia):
