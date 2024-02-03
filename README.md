@@ -1,5 +1,7 @@
 # Panel domótica con Node-RED
 
+... EN CONSTRUCCIÓN
+
 Demo de implementación de panel domótico con Node-RED para proyectos de dómotica de bajo costo. 
 
 ## Implementación con Node-RED
