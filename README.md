@@ -4,19 +4,28 @@ Demo de implementación de panel domótico con Node-RED para proyectos de dómot
 
 [Node-RED](https://nodered.org/) es una herramienta de desarrollo basada en flujo para programación visual desarrollada originalmente por IBM para conectar dispositivos de hardware, API y servicios en línea como parte de la Internet de las cosas. Proporciona un editor de flujo basado en navegador web, que se puede utilizar para crear funciones de JavaScript. Los elementos de las aplicaciones se pueden guardar o compartir para su reutilización. El tiempo de ejecución se basa en Node.js. Los flujos creados en Node-RED se almacenan mediante JSON. Desde la versión 0.14, los nodos MQTT pueden realizar conexiones TLS correctamente configuradas. En 2016, IBM contribuyó con Node-RED como un proyecto de OpenJS Foundation de código abierto. [Wikipedia](https://en.wikipedia.org/wiki/Node-RED).
 
+![](./docs/images/arquitectura.png)
+*Arquitectura del sistema*.
+
 ## Hardware
 
 El hardware para este demo está basado en una placa NodeMCU (SoC ESP8266) aunque se puede utilizar sin problemas con placas basadas en el SoC ESP32.
 
-## Implementación con Node-RED
-
-
+![](./hardware/schematic.png)
+*Diagrama esquemático*.
 
 ## Firmware con Arduino API
 
+Simulación en línea sobre ESP32, disponible en [Wokwi](https://wokwi.com/projects/378045103778705409).
 
+Para compilar el proyecto necesita las siguientes dependencias:
+
+- [PubSubClient](https://github.com/knolleary/pubsubclient)
+- [DHT sensor library](https://github.com/adafruit/DHT-sensor-library)
 
 ## Firmware con MicroPython
+
+Simulación en línea sobre ESP32, disponible en [Wokwi](https://wokwi.com/projects/388923768636934145).
 
 Metadata-Version: 1.0
 Name: micropython-umqtt.robust
@@ -27,20 +36,50 @@ Author: MicroPython Developers
 Author-email: micro-python@googlegroups.com
 License: MIT
 Description: umqtt.robust
-        ============
 
-        umqtt is a simple MQTT client for MicroPython. (Note that it uses some
-        MicroPython shortcuts and doesn't work with CPython). It consists of
-        two submodules: umqtt.simple and umqtt.robust. umqtt.robust is built
-        on top of umqtt.simple and adds auto-reconnect facilities for some of
-        networking errors.
+umqtt is a simple MQTT client for MicroPython. (Note that it uses some MicroPython shortcuts and doesn't work with CPython). It consists of two submodules: umqtt.simple and umqtt.robust. umqtt.robust is built on top of umqtt.simple and adds auto-reconnect facilities for some of networking errors.
 
 umqtt.robust
-umqtt is a simple MQTT client for MicroPython. (Note that it uses some
-MicroPython shortcuts and doesn't work with CPython). It consists of
-two submodules: umqtt.simple and umqtt.robust. umqtt.robust is built
-on top of umqtt.simple and adds auto-reconnect facilities for some of
-networking errors.
+umqtt is a simple MQTT client for MicroPython. (Note that it uses some MicroPython shortcuts and doesn't work with CPython). It consists of two submodules: umqtt.simple and umqtt.robust. umqtt.robust is built on top of umqtt.simple and adds auto-reconnect facilities for some of networking errors.
+
+![](./docs/images/Thonny.png)
+*Thonny IDE*.
+
+## Broker MQTT
+
+El servidor puede estar instalado en una [Raspberry Pi](https://es.wikipedia.org/wiki/Raspberry_Pi) o bien es posible utilizar algún broker público. En este caso utilizamos [test.mosquitto.org](https://test.mosquitto.org/) que alberga un servidor/broker MQTT [Eclipse Mosquitto](https://mosquitto.org/) públicamente. 
+
+El servidor escucha en los siguientes puertos:
+
+- `1883` MQTT, unencrypted, unauthenticated
+- `1884` MQTT, unencrypted, authenticated
+- `8883` MQTT, encrypted, unauthenticated
+- `8884` MQTT, encrypted, client certificate required
+- `8885` MQTT, encrypted, authenticated
+- `8886` MQTT, encrypted, unauthenticated
+- `8887` MQTT, encrypted, server certificate deliberately expired
+- `8080` MQTT over WebSockets, unencrypted, unauthenticated
+- `8081` MQTT over WebSockets, encrypted, unauthenticated
+- `8090` MQTT over WebSockets, unencrypted, authenticated
+- `8091` MQTT over WebSockets, encrypted, authenticated
+
+[MQTT Explorer](http://mqtt-explorer.com/)
+
+![](./docs/images/MQTT%20Explorer.png)
+*MQTT Explorer*.
+
+## Implementación con Node-RED
+
+![](./docs/images/Node-RED%20Editor.png)
+*Node-RED Editor*.
+
+![](./docs/images/dashboard_02.png)
+*Dashboard UI*.
+
+## Recursos
+
+- [ESP32 Pinout Reference: Which GPIO pins should you use?](https://randomnerdtutorials.com/esp32-pinout-reference-gpios/)
+- [ESP8266 Pinout Reference: Which GPIO pins should you use?](https://randomnerdtutorials.com/esp8266-pinout-reference-gpios/)
 
 ## Licencia
 
