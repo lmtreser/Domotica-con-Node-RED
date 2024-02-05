@@ -10,7 +10,7 @@ from machine import Pin, Timer
 from umqtt.robust import MQTTClient
 
 # ----- Definicion de dispositivos
-#dht = DHT11(Pin(32))
+dht = DHT11(Pin(32))
 led = Pin(15, Pin.OUT)
 
 # ----- Lectura de humedad y temperatura
