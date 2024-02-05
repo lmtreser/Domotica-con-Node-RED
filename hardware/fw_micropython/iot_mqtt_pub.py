@@ -1,7 +1,7 @@
 # Ejemplo Introducción al IoT
-# /entradas/switch - Opera a distancia un LED
-# /entradas/sensor/temperatura - Envia la temperatura periodicamente
-# /entradas/sensor/humedad - Enviar la humedad periodicamente
+# topic/actuador1 - Opera a distancia un RELÉ
+# topic/sensor1 - Envia la temperatura periodicamente
+# topic/sensor2 - Enviar la humedad periodicamente
 
 import network
 from dht import DHT11
@@ -18,8 +18,8 @@ def temperatura(timer):
     dht.measure()
     temp = dht.temperature()
     hum = dht.humidity()
-    cliente.publish("/entradas/sensor/temperatura", str(temp))
-    cliente.publish("/entradas/sensor/humedad", str(hum))
+    cliente.publish("topic/sensor1", str(temp))
+    cliente.publish("topic/sensor2", str(hum))
     print(f"Temperatura: {temp} °C")
     print(f"Humedad: {hum} %RH\n")
 
@@ -31,7 +31,7 @@ def callback(topic, msg):
     topico = topic.decode()
     
     # LED
-    if (topico == "/entradas/switch"):
+    if (topico == "topic/actuador1"):
         if (mensaje == "true"):
             led.value(1)
         elif (mensaje == "false"):
@@ -53,11 +53,11 @@ config = wlan.ifconfig()
 print(f"Conectado con ip {config[0]}")
 
 # Conexión al broker MQTT
-cliente = MQTTClient("esp32", "192.168.1.33", port=1883)
+cliente = MQTTClient("mqtt_id", "host", port=1883)
 print("Conectando a servidor MQTT...")
 cliente.set_callback(callback)
 cliente.connect()
-cliente.subscribe("/entradas/switch")
+cliente.subscribe("topic/actuador1")
 print("Conectado")
 
 # ----- Inicia el Timer0
