@@ -15,7 +15,7 @@ PubSubClient client(espClient);
 
 //Constantes y variables
 const int MSG_BUFFER_SIZE = 20;
-const int LED_ROJO = D3;
+const int LED_ROJO = D1;
 const char actuador[] = "true";
 char mensaje[MSG_BUFFER_SIZE];
 int flag;
