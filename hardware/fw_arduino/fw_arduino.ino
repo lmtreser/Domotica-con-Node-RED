@@ -1,7 +1,19 @@
 /*
-    Ejemplos Domóticos - Prof. Lucas Martín Treser
-    22 de marzo de 2023    
+  * Panel domótica con Node-RED
+  * 
+  * Demo de implementación de panel domótico con Node-RED para proyectos 
+  * de dómotica de bajo costo. 
+  * 
+  * created 01 Sep 2022
+  * by Lucas Martin Treser
+  * 
+  * modified 22 Mar 2023
+  * modified 01 Oct 2023
+  * modified 05 Feb 2024
+  * by Lucas Martin Treser      
+  * 
 */
+
 #include <ESP8266WiFi.h>
 #include <PubSubClient.h>
 #include "credenciales.h"
