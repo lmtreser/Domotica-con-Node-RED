@@ -22,7 +22,7 @@ El sistema está basado en los siguientes componentes:
 
 ## Broker MQTT
 
-El servidor puede estar instalado en una [Raspberry Pi](https://es.wikipedia.org/wiki/Raspberry_Pi) o bien es posible utilizar algún broker público. En este caso utilizamos [test.mosquitto.org](https://test.mosquitto.org/) que alberga un servidor/broker MQTT [Eclipse Mosquitto](https://mosquitto.org/) públicamente. 
+El servidor puede estar instalado en una [Raspberry Pi](https://es.wikipedia.org/wiki/Raspberry_Pi) o bien es posible utilizar algún broker público. En este caso utilizamos [test.mosquitto.org](https://test.mosquitto.org/) que alberga públicamente un servidor/broker MQTT [Eclipse Mosquitto](https://mosquitto.org/).
 
 El servidor escucha en los siguientes puertos:
 
@@ -57,10 +57,10 @@ En este proyecto se utilizaron las siguientes dependencias:
 
 ## Hardware
 
-El hardware para este demo está basado en una placa NodeMCU (SoC ESP8266) aunque se puede utilizar sin problemas con placas basadas en el SoC ESP32. El diagrama esquemático de la versión con el SoC ESP8266 es el siguiente:
+El hardware está basado en una placa NodeMCU (SoC ESP8266) aunque se puede utilizar sin problemas con placas basadas en el SoC ESP32. El diagrama pictórico de la versión con el SoC ESP8266 es el siguiente:
 
 ![](./hardware/schematic.png)
-*Diagrama esquemático*.
+*Hardware basado en NodeMCU ESP8266*.
 
 Hay dos versiones disponible del firmware del SoC: una implementación en C++ mediante la API de Arduino, y otra con MicroPython.
 
