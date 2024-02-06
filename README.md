@@ -1,49 +1,24 @@
-# Panel domótica con Node-RED
+# Domótica con Node-RED
 
 Demo de implementación de panel domótico con Node-RED para proyectos de dómotica de bajo costo. 
 
-[Node-RED](https://nodered.org/) es una herramienta de desarrollo basada en flujo para programación visual desarrollada originalmente por IBM para conectar dispositivos de hardware, API y servicios en línea como parte de la Internet de las cosas. Proporciona un editor de flujo basado en navegador web, que se puede utilizar para crear funciones de JavaScript. Los elementos de las aplicaciones se pueden guardar o compartir para su reutilización. El tiempo de ejecución se basa en Node.js. Los flujos creados en Node-RED se almacenan mediante JSON. Desde la versión 0.14, los nodos MQTT pueden realizar conexiones TLS correctamente configuradas. En 2016, IBM contribuyó con Node-RED como un proyecto de OpenJS Foundation de código abierto. [Wikipedia](https://en.wikipedia.org/wiki/Node-RED).
+[Node-RED](https://nodered.org/) es una herramienta de desarrollo basada en flujo para programación visual desarrollada originalmente por IBM para conectar dispositivos de hardware, API y servicios en línea como parte de la Internet de las cosas. Proporciona un editor de flujo basado en navegador web, que se puede utilizar para crear funciones de JavaScript. 
+
+![](./docs/images/Node-RED%20Editor.png)
+*Node-RED Editor*.
+
+Los elementos de las aplicaciones se pueden guardar o compartir para su reutilización. El tiempo de ejecución se basa en Node.js. Los flujos creados en Node-RED se almacenan mediante JSON. Desde la versión 0.14, los nodos MQTT pueden realizar conexiones TLS correctamente configuradas. En 2016, IBM contribuyó con Node-RED como un proyecto de OpenJS Foundation de código abierto. [Wikipedia](https://en.wikipedia.org/wiki/Node-RED).
+
+## Arquitectura del sistema
+
+El sistema está basado en los siguientes componentes:
+
+- Servidor: broker MQTT Mosquitto (cloud).
+- Cliente: dashboard sobre Node-RED.
+- Cliente: hardware con sensores de temperatura y humedad ambiente, y actuador.
 
 ![](./docs/images/arquitectura.png)
 *Arquitectura del sistema*.
-
-## Hardware
-
-El hardware para este demo está basado en una placa NodeMCU (SoC ESP8266) aunque se puede utilizar sin problemas con placas basadas en el SoC ESP32.
-
-![](./hardware/schematic.png)
-*Diagrama esquemático*.
-
-## Firmware con Arduino API
-
-Simulación en línea sobre ESP32, disponible en [Wokwi](https://wokwi.com/projects/378045103778705409).
-
-Para compilar el proyecto necesita las siguientes dependencias:
-
-- [PubSubClient](https://github.com/knolleary/pubsubclient)
-- [DHT sensor library](https://github.com/adafruit/DHT-sensor-library)
-
-## Firmware con MicroPython
-
-Simulación en línea sobre ESP32, disponible en [Wokwi](https://wokwi.com/projects/388923768636934145).
-
-Metadata-Version: 1.0
-Name: micropython-umqtt.robust
-Version: 1.0
-Summary: Lightweight MQTT client for MicroPython ("robust" version).
-Home-page: https://github.com/micropython/micropython/issues/405
-Author: MicroPython Developers
-Author-email: micro-python@googlegroups.com
-License: MIT
-Description: umqtt.robust
-
-umqtt is a simple MQTT client for MicroPython. (Note that it uses some MicroPython shortcuts and doesn't work with CPython). It consists of two submodules: umqtt.simple and umqtt.robust. umqtt.robust is built on top of umqtt.simple and adds auto-reconnect facilities for some of networking errors.
-
-umqtt.robust
-umqtt is a simple MQTT client for MicroPython. (Note that it uses some MicroPython shortcuts and doesn't work with CPython). It consists of two submodules: umqtt.simple and umqtt.robust. umqtt.robust is built on top of umqtt.simple and adds auto-reconnect facilities for some of networking errors.
-
-![](./docs/images/Thonny.png)
-*Thonny IDE*.
 
 ## Broker MQTT
 
@@ -63,23 +38,64 @@ El servidor escucha en los siguientes puertos:
 - `8090` MQTT over WebSockets, unencrypted, authenticated
 - `8091` MQTT over WebSockets, encrypted, authenticated
 
-[MQTT Explorer](http://mqtt-explorer.com/)
+Para realizar pruebas es posible utilizar algún cliente *desktop* como [MQTT Explorer](http://mqtt-explorer.com/).
 
 ![](./docs/images/MQTT%20Explorer.png)
-*MQTT Explorer*.
+*MQTT Explorer ejecutándose sobre Ubuntu 22.04*.
 
-## Implementación con Node-RED
+## Implementando un dashboard con Node-RED
 
-![](./docs/images/Node-RED%20Editor.png)
-*Node-RED Editor*.
+Node-RED permite gestionar la recepción y envio de información a través de un broker MQTT, para poder comunicarse con los diferentes clientes del sistema (apps móviles, hardware, etc.). Además permite diseñar y poner en línea un completo *dashboard* (o panel de control) con la posibilidad de insertar diferentes widgets tanto para mostrar como para enviar datos.
 
 ![](./docs/images/dashboard_02.png)
 *Dashboard UI*.
+
+En este proyecto se utilizaron las siguientes dependencias:
+
+- [node-red-dashboard](https://flows.nodered.org/node/node-red-dashboard)
+- [node-red-contrib-ui-media](https://flows.nodered.org/node/node-red-contrib-ui-media)
+
+## Hardware
+
+El hardware para este demo está basado en una placa NodeMCU (SoC ESP8266) aunque se puede utilizar sin problemas con placas basadas en el SoC ESP32. El diagrama esquemático de la versión con el SoC ESP8266 es el siguiente:
+
+![](./hardware/schematic.png)
+*Diagrama esquemático*.
+
+Hay dos versiones disponible del firmware del SoC: una implementación en C++ mediante la API de Arduino, y otra con MicroPython.
+
+## Firmware Arduino API
+
+La primera versión del firmware, en C++, se encuentra en el directorio `./hardware/fw_arduino`. Además hay una versión funcional en línea sobre el SoC ESP32, disponible en [Wokwi](https://wokwi.com/projects/378045103778705409).
+
+Para compilar, el proyecto necesita las siguientes dependencias:
+
+- [PubSubClient](https://github.com/knolleary/pubsubclient)
+- [DHT sensor library](https://github.com/adafruit/DHT-sensor-library)
+
+## Firmware MicroPython
+
+La segunda versión del firmware, en MicroPython, se encuentra en el directorio `./hardware/fw_micropython`. Además hay una versión funcional en línea sobre el SoC ESP32, disponible en [Wokwi](https://wokwi.com/projects/388923768636934145).
+
+Para escribir código en MicroPython y poder cargar tanto el firmware (el interprete Python) como los scripts en la memoria del SoC, es posible utilizar Thonny.
+
+Thonny es un entorno de desarrollo integrado gratuito y de código abierto para Python diseñado para principiantes. Fue creado por Aivar Annamaa, un programador estonio. Admite diferentes formas de recorrer el código paso a paso, evaluación de expresiones paso a paso, visualización detallada de la pila de llamadas y un modo para explicar los conceptos de referencias y montón.[Wikipedia](https://en.wikipedia.org/wiki/Thonny).
+
+![](./docs/images/Thonny.png)
+*Thonny IDE*.
+
+Para funcionar, es necesaria la siguiente dependencia:
+
+- [micropython-umqtt.robust](https://pypi.org/project/micropython-umqtt.robust/)
+
+**umqtt** es un cliente MQTT sencillo para MicroPython, que consta de dos submódulos: *umqtt.simple* y *umqtt.robust*. umqtt.robust está construido sobre umqtt.simple y agrega funciones de reconexión automática para lidiar con algunos errores de red.
 
 ## Recursos
 
 - [ESP32 Pinout Reference: Which GPIO pins should you use?](https://randomnerdtutorials.com/esp32-pinout-reference-gpios/)
 - [ESP8266 Pinout Reference: Which GPIO pins should you use?](https://randomnerdtutorials.com/esp8266-pinout-reference-gpios/)
+- [MicroPython](https://github.com/micropython/micropython)
+- [Thonny Python IDE for beginners](https://github.com/thonny/thonny/)
 
 ## Licencia
 
