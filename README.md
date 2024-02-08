@@ -2,7 +2,7 @@
 
 Demo de implementación de panel domótico con Node-RED para proyectos de dómotica de bajo costo. 
 
-[Node-RED](https://nodered.org/) es una herramienta de desarrollo basada en flujo para programación visual desarrollada originalmente por IBM para conectar dispositivos de hardware, API y servicios en línea como parte de la Internet de las cosas. Proporciona un editor de flujo basado en navegador web, que se puede utilizar para crear funciones de JavaScript.[Wikipedia](https://en.wikipedia.org/wiki/Node-RED).
+[Node-RED](https://nodered.org/) es una herramienta de desarrollo basada en flujo para programación visual desarrollada originalmente por IBM para conectar dispositivos de hardware, API y servicios en línea como parte de la Internet de las cosas. Proporciona un editor de flujo basado en navegador web, que se puede utilizar para crear funciones de JavaScript. [Wikipedia](https://en.wikipedia.org/wiki/Node-RED).
 
 ![](./docs/images/Node-RED%20Editor.png)
 *Node-RED Editor*.
@@ -20,7 +20,7 @@ El proyecto está basado en los siguientes componentes:
 
 ## Broker MQTT
 
-El servidor puede estar instalado en una [Raspberry Pi](https://es.wikipedia.org/wiki/Raspberry_Pi) o bien es posible utilizar algún broker público. En este caso utilizamos [test.mosquitto.org](https://test.mosquitto.org/) que alberga públicamente un servidor/broker MQTT [Eclipse Mosquitto](https://mosquitto.org/).
+El broker puede estar instalado en una [Raspberry Pi](https://es.wikipedia.org/wiki/Raspberry_Pi) o bien es posible utilizar algún broker público. En este caso utilizamos [test.mosquitto.org](https://test.mosquitto.org/) que alberga públicamente un servidor/broker MQTT [Eclipse Mosquitto](https://mosquitto.org/).
 
 El servidor escucha en los siguientes puertos:
 
@@ -77,12 +77,12 @@ La segunda versión del firmware, en MicroPython, se encuentra en el directorio 
 
 Para escribir código en MicroPython y poder cargar tanto el firmware (el interprete Python) como los scripts en la memoria del SoC, es posible utilizar Thonny.
 
-Thonny es un entorno de desarrollo integrado gratuito y de código abierto para Python diseñado para principiantes. Fue creado por Aivar Annamaa, un programador estonio. Admite diferentes formas de recorrer el código paso a paso, evaluación de expresiones paso a paso, visualización detallada de la pila de llamadas y un modo para explicar los conceptos de referencias y montón.[Wikipedia](https://en.wikipedia.org/wiki/Thonny).
+Thonny es un entorno de desarrollo integrado gratuito y de código abierto para Python diseñado para principiantes. Fue creado por Aivar Annamaa, un programador estonio.[Wikipedia](https://en.wikipedia.org/wiki/Thonny).
 
 ![](./docs/images/Thonny.png)
 *Thonny IDE*.
 
-Para funcionar, es necesaria la siguiente dependencia:
+El script Python necesita para funcionar la siguiente dependencia:
 
 - [micropython-umqtt.robust](https://pypi.org/project/micropython-umqtt.robust/)
 
