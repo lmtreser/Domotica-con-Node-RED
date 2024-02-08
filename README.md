@@ -77,7 +77,7 @@ La segunda versión del firmware, en MicroPython, se encuentra en el directorio 
 
 Para escribir código en MicroPython y poder cargar tanto el firmware (el interprete Python) como los scripts en la memoria del SoC, es posible utilizar Thonny.
 
-Thonny es un entorno de desarrollo integrado gratuito y de código abierto para Python diseñado para principiantes. Fue creado por Aivar Annamaa, un programador estonio.[Wikipedia](https://en.wikipedia.org/wiki/Thonny).
+Thonny es un entorno de desarrollo integrado gratuito y de código abierto para Python diseñado para principiantes. Fue creado por Aivar Annamaa, un programador estonio. [Wikipedia](https://en.wikipedia.org/wiki/Thonny).
 
 ![](./docs/images/Thonny.png)
 *Thonny IDE*.
