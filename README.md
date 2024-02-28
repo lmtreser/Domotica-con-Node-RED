@@ -2,7 +2,7 @@
 
 Demo de implementación de panel domótico con Node-RED para proyectos de dómotica de bajo costo. 
 
-[Node-RED](https://nodered.org/) es una herramienta de desarrollo basada en flujo para programación visual desarrollada originalmente por IBM para conectar dispositivos de hardware, API y servicios en línea como parte de la Internet de las cosas. Proporciona un editor de flujo basado en navegador web, que se puede utilizar para crear funciones de JavaScript. [Wikipedia](https://en.wikipedia.org/wiki/Node-RED).
+[Node-RED](https://nodered.org/) es una herramienta de desarrollo basada en flujo para programación visual desarrollada originalmente por IBM para conectar dispositivos de hardware, API y servicios en línea como parte de la Internet de las cosas. Proporciona un editor de flujo basado en navegador web, que se puede utilizar para crear funciones de JavaScript. Más en [Wikipedia](https://en.wikipedia.org/wiki/Node-RED).
 
 ![](./docs/images/Node-RED%20Editor.png)
 *Node-RED Editor*.
@@ -77,7 +77,7 @@ La segunda versión del firmware, en MicroPython, se encuentra en el directorio 
 
 Para escribir código en MicroPython y poder cargar tanto el firmware (el interprete Python) como los scripts en la memoria del SoC, es posible utilizar Thonny.
 
-Thonny es un entorno de desarrollo integrado gratuito y de código abierto para Python diseñado para principiantes. Fue creado por Aivar Annamaa, un programador estonio. [Wikipedia](https://en.wikipedia.org/wiki/Thonny).
+Thonny es un entorno de desarrollo integrado gratuito y de código abierto para Python diseñado para principiantes. Fue creado por Aivar Annamaa, un programador estonio. Más en [Wikipedia](https://en.wikipedia.org/wiki/Thonny).
 
 ![](./docs/images/Thonny.png)
 *Thonny IDE*.
